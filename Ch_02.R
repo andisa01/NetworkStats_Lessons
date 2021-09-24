@@ -4,10 +4,12 @@ library(igraph)
 g <- graph.formula(1-2, 1-3, 2-3, 2-4, 3-5, 4-5, 4-6, 4-7, 5-6, 6-7)
 
 str(g)
+print_all(g)
 
 V(g)
 E(g)
 
+set.seed(666)
 plot(g)
 plot(g) # Plot is different each time.
 
