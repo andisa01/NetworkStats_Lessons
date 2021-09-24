@@ -57,17 +57,10 @@ E(karate)[ F1 %--% F2 ]$color <- "yellow"
 V(karate)$label.dist <- ifelse(V(karate)$size >= 10, 0, 0.75)
 plot(karate, layout=l)
 
-library(ggraph)
-data(karate)
-ggraph(karate, layout = 'kk') +
-  geom_edge_link() +
-  geom_node_point()
-str(karate)
 
-create_layout(karate, layout = 'kk') %>% head()
-
+# Rewriting the same plot in tidygraph format with ggraph
 library(tidygraph)
-library()
+library(tidyverse)
 K <- as_tbl_graph(karate)
 K %>%
   activate(nodes) %>%
