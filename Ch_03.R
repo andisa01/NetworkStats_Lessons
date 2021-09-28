@@ -61,6 +61,7 @@ plot(karate, layout=l)
 # Rewriting the same plot in tidygraph format with ggraph
 library(tidygraph)
 library(tidyverse)
+library(ggraph)
 K <- as_tbl_graph(karate)
 K %>%
   activate(nodes) %>%
@@ -82,3 +83,19 @@ ggraph(layout = 'kk') +
   scale_size_identity() +
   theme_graph() +
   theme(legend.position = "none")
+
+# Political parties a la Christopher
+library(ggraph)
+library(tidyverse)
+library(sand)
+library(tidygraph)
+library(deldir)
+
+as_tbl_graph(fblog) -> fblog_gr
+
+ggraph(fblog_gr, layout = "kk") + 
+  geom_node_voronoi(aes(fill = PolParty), max.radius = 1) +
+  geom_node_point(alpha = .4) + 
+  geom_edge_link(alpha = .2) + 
+  scale_fill_viridis_d() + 
+  theme_graph(base_family =  "Sans")
